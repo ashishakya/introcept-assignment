@@ -13,12 +13,13 @@
                               :message="form.errors.get('name')"/>
               </div>
               <div class="form-group col-md-6">
-                <label class="required">Gender</label>
+                <label class="required" style="display: block">Gender</label>
                 <label for="gender_male">
-                  <input type="radio" @click=form.errors.clear($event.target.name) v-model="formData.gender" class="form-control" id="gender_male" placeholder="Select gender" name="gender" value="male">Male
+                  <input type="radio" class="m-1" @click=form.errors.clear($event.target.name) v-model="formData.gender" id="gender_male" placeholder="Select gender" name="gender"
+                         value="male">Male
                 </label>
                 <label for="gender_female">
-                  <input type="radio" @click=form.errors.clear($event.target.name) v-model="formData.gender" class="form-control" id="gender_female" placeholder="Select gender" name="gender"
+                  <input type="radio"  class="m-1" @click=form.errors.clear($event.target.name) v-model="formData.gender" id="gender_female" placeholder="Select gender" name="gender"
                          value="female">Female
                 </label>
                 <ErrorMessage v-if="form.errors.has('gender')"
@@ -42,13 +43,13 @@
             <div class="row">
               <div class="form-group col-md-6">
                 <label for="address" class="required">Address</label>
-                <input type="text" class="form-control" v-model="formData.address" id="address" name="address" placeholder="Enter Address">
+                <input type="text" class="form-control" v-model="formData.address" id="address" name="address" placeholder="Enter address">
                 <ErrorMessage v-if="form.errors.has('address')"
                               :message="form.errors.get('address')"/>
               </div>
               <div class="form-group col-md-6">
                 <label for="nationality" class="required">Nationality</label>
-                <input type="text" class="form-control" v-model="formData.nationality" id="nationality" name="nationality" placeholder="Enter Nationality">
+                <input type="text" class="form-control" v-model="formData.nationality" id="nationality" name="nationality" placeholder="Enter nationality">
                 <ErrorMessage v-if="form.errors.has('nationality')"
                               :message="form.errors.get('nationality')"/>
               </div>
@@ -62,7 +63,7 @@
               </div>
               <div class="form-group col-md-6">
                 <label for="education_background"  class="required">Education Background</label>
-                <input type="text" class="form-control" v-model="formData.educational_background" id="education_background" name="educational_background" placeholder="Education Background">
+                <input type="text" class="form-control" v-model="formData.educational_background" id="education_background" name="educational_background" placeholder="Education background">
                 <ErrorMessage v-if="form.errors.has('educational_background')"
                               :message="form.errors.get('educational_background')"/>
               </div>
@@ -81,6 +82,7 @@
               </div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a :href="route('employees.index')" class="btn btn-danger">Cancel</a>
           </form>
         </div>
       </div>
@@ -91,15 +93,14 @@
 <script>
 import Form from "../../Classes/Form";
 import ErrorMessage from "../Common/ErrorMessage";
+import routeMixin from "../../mixins/routeMixin";
 
 export default {
-  name: "create-employee-form",
-  props: {
-    targetUrl: {required: true, type: String}
-  },
+  name: "employee-create-form",
   components:{
     ErrorMessage
   },
+  mixins:[routeMixin],
   data(){
     return {
       form:new Form(),
@@ -118,8 +119,9 @@ export default {
   },
   methods:{
     handleSubmit(){
+      const targetRoute = this.route("api.employees.store");
       this.form = new Form(this.formData);
-      this.form.submit("post", this.targetUrl)
+      this.form.submit("post", targetRoute)
     }
   }
 }

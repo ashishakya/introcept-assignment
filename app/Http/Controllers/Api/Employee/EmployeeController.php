@@ -41,7 +41,7 @@ class EmployeeController extends BaseAPIController
         try {
             $request->prepare()->persist();
 
-            return $this->sendJsonRedirectResponse(route("home"));
+            return $this->sendJsonRedirectResponse(route("employees.index"));
         } catch ( Exception $e ) {
             logger()->error($e->getMessage());
 
