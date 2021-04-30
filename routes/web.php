@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//todo fix naming
 Route::get('/', function () {
     return view('home');
-});
+})->name("home");
 
