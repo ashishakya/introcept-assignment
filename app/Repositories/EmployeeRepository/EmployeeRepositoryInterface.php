@@ -20,5 +20,12 @@ interface EmployeeRepositoryInterface
     /**
      * @return \Illuminate\Support\Collection
      */
-    public function all():Collection;
+    public function all(): Collection;
+
+    /**
+     * @param int $id
+     *
+     * @return array
+     */
+    public function findById(int $id):array;
 }

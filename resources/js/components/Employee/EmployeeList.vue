@@ -18,7 +18,7 @@
             <tbody>
             <tr v-for="(employee, index) in employees" :key="index">
               <th scope="row" v-text="++index"/>
-              <td v-text="employee.name"/>
+              <td><a :href="route('employees.show', [employee.id])" v-text="employee.name"/></td>
               <td v-text="employee.gender"/>
               <td>
                 <span style="display: block">Phone: <span v-text="employee.phone"/></span>
