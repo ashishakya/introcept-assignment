@@ -2,11 +2,6 @@
 
 @section('content')
 	<div class="container">
-		<create-employee-form></create-employee-form>
-		{{--                    @if (session('status'))--}}
-		{{--                        <div class="alert alert-success" role="alert">--}}
-		{{--                            {{ session('status') }}--}}
-		{{--                        </div>--}}
-		{{--                    @endif--}}
+		<create-employee-form target-url="{{ route("api.employees.store") }}"></create-employee-form>
 	</div>
 @endsection
