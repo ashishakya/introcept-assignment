@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 //todo fix naming
-Route::get('/', function () {
-    return view('home');
-})->name("home");
+Route::get(
+    '/',
+    function () {
+        return view('home');
+    }
+)->name("home");
+
+Route::get("employees", [EmployeeController::class, "index"])->name("employees.index");
 

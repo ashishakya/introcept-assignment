@@ -71,10 +71,12 @@ class EmployeeCreateRequest extends FormRequest
     public function validated(): array
     {
         return array_merge(
-            [
-                'id' => time(),
-            ],
+            ["id" => time()],
             parent::validated(),
+            [
+                "created_at" => now(),
+                "updated_at"=>now()
+            ]
         );
     }
 

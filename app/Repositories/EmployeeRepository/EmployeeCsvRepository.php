@@ -2,12 +2,20 @@
 
 namespace App\Repositories\EmployeeRepository;
 
+use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
+
 /**
  * Class EmployeeCsvRepository
  * @package App\Repositories
  */
 class EmployeeCsvRepository implements EmployeeRepositoryInterface
 {
+    /**
+     * @var string
+     */
+    private string $fileName = "employee.csv";
+
     /**
      * Write data in a csv file
      *
@@ -18,11 +26,48 @@ class EmployeeCsvRepository implements EmployeeRepositoryInterface
     public function store(array $data)
     {
         try {
-            $file = storage_path("employee.csv");
-            $file = fopen($file, "a");
+            $filePath = storage_path($this->fileName);
+            $file     = fopen($filePath, "a");
             fputcsv($file, $data);
+            fclose($file);
         } catch ( \Exception $exception ) {
             throw new \Exception($exception);
         }
+    }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function all(): Collection
+    {
+        $filePath  = storage_path($this->fileName);
+        $employees = [];
+
+        if ( !file_exists($filePath) ) {
+            return collect($employees);
+        }
+
+        $file = fopen($filePath, "r");
+
+        while ( ($employeesDataSet = fgetcsv($file, 1000, ",")) !== false ) {
+            $employees[] = [
+                "id"                     => $employeesDataSet[0],
+                "name"                   => $employeesDataSet[1],
+                "gender"                 => Str::ucfirst($employeesDataSet[2]),
+                "phone"                  => $employeesDataSet[3],
+                "email"                  => $employeesDataSet[4],
+                "address"                => $employeesDataSet[5],
+                "nationality"            => $employeesDataSet[6],
+                "dob"                    => $employeesDataSet[7],
+                "educational_background" => $employeesDataSet[8],
+                "mode_of_contact"        => Str::ucfirst($employeesDataSet[9]),
+                "created_at"             => $employeesDataSet[10],
+                "updated_at"             => $employeesDataSet[11],
+            ];
+        }
+
+        fclose($file);
+
+        return collect($employees)->sortByDesc("created_at")->values();
     }
 }
