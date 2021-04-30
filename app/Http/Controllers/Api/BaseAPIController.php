@@ -44,23 +44,17 @@ class BaseAPIController extends Controller
     }
 
     /**
-     * @param       $error
-     * @param array $errorMessages
-     * @param int   $code
+     * @param string $errorMessage
+     * @param int    $code
      *
      * @return JsonResponse
      */
-    public function sendError($error, $errorMessages = [], $code = 404): JsonResponse
+    public function sendError(string $errorMessage="Error occurred", $code = 404): JsonResponse
     {
         $response = [
             'success' => false,
-            'message' => $error,
-            'data'    => [],
+            'message' => $errorMessage,
         ];
-
-        if ( !empty($errorMessages) ) {
-            $response['data'] = $errorMessages;
-        }
 
         return response()->json($response, $code);
     }
