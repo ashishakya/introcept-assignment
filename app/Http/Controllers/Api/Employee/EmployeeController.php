@@ -58,5 +58,17 @@ class EmployeeController extends BaseAPIController
 
         return $this->sendResponse($employees);
     }
+
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($id): JsonResponse
+    {
+        $employeeDetail = $this->employeeService->findById((int) $id);
+
+        return $this->sendResponse($employeeDetail);
+    }
 }
 

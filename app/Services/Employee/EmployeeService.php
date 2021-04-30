@@ -33,4 +33,14 @@ class EmployeeService
     {
         return $this->employeeRepository->all();
     }
+
+    /**
+     * @param int $id
+     *
+     * @return array
+     */
+    public function findById(int $id): array
+    {
+        return $this->employeeRepository->findById($id);
+    }
 }

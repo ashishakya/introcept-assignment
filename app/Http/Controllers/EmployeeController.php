@@ -23,4 +23,14 @@ class EmployeeController extends Controller
     {
         return view("employee.create");
     }
+
+    /**
+     * @param int $id
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function show(int $id)
+    {
+        return view("employee.show");
+    }
 }

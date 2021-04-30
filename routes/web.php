@@ -21,4 +21,4 @@ Route::get(
     }
 );
 
-Route::resource("employees", EmployeeController::class)->only(["create", "index"]);
+Route::resource("employees", EmployeeController::class)->only(["create", "index", "show"]);
