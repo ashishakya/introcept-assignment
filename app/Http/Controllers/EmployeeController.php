@@ -15,4 +15,12 @@ class EmployeeController extends Controller
     {
         return view("employee.index");
     }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    public function create()
+    {
+        return view("employee.create");
+    }
 }

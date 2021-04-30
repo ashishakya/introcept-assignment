@@ -14,13 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//todo fix naming
 Route::get(
     '/',
     function () {
-        return view('home');
+        return redirect()->route("employees.index");
     }
-)->name("home");
+);
 
-Route::get("employees", [EmployeeController::class, "index"])->name("employees.index");
-
+Route::resource("employees", EmployeeController::class)->only(["create", "index"]);

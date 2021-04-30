@@ -4,6 +4,7 @@
       <div class="card">
         <div class="card-header">Employees List</div>
         <div class="card-body">
+          <div class="float-right"><a :href="route('employees.create')"><b>New Registration</b></a></div>
           <table class="table">
             <thead class="thead-dark">
             <tr>
@@ -38,22 +39,23 @@
 </template>
 
 <script>
+import routeMixin from "../../mixins/routeMixin";
+
 export default {
   name: "employee-list",
-  props: {
-    targetUrl: {required: true, type: String}
-  },
   data() {
     return {
       employees: []
     }
   },
+  mixins:[routeMixin],
   mounted() {
     this.fetchEmployees()
   },
   methods: {
     fetchEmployees() {
-      axios.get(this.targetUrl)
+      const targetRoute = this.route("api.employees.index");
+      axios.get(targetRoute)
           .then(({data}) => this.employees = data.data)
           .catch(e => console.log("Error occurred while fetching employees " + e));
     }

@@ -2,6 +2,6 @@
 
 @section('content')
 	<div class="container">
-		<employee-list/>
+		<employee-create-form/>
 	</div>
 @endsection
