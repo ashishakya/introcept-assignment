@@ -97,7 +97,7 @@ class EmployeeCreateRequest extends FormRequest
     {
         try {
             $this->employeeCsvRepository->store($this->data);
-        } catch ( \Exception $e ) {
+        } catch (\Exception $e) {
             throw new \Exception($e);
         }
     }

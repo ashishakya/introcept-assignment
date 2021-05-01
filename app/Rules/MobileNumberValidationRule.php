@@ -27,7 +27,7 @@ class MobileNumberValidationRule implements Rule
      */
     public function passes($attribute, $mobileNumber)
     {
-        if ( !is_numeric($mobileNumber) ) {
+        if (!is_numeric($mobileNumber)) {
             return false;
         }
 
