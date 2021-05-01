@@ -1,25 +1,17 @@
-## Installation Process:
-- laravel new `<project_name>`
-- composer require `laravel/ui`
-- `php artisan ui bootstrap --auth`
-- `npm install && npm run dev`
+# IntroCept Task-Assessment
 
+## Prerequisite
+- PHP >=7.4
+- Node >=12
+- Composer 1
 
-## Package reference:
-- https://github.com/laravel/ui
-- https://www.youtube.com/watch?v=NuGBzmHlINQ&ab_channel=LaravelDaily
+## Initial setup:
+- Clone the repo using `git clone https://github.com/ashishakya/introcept-assignment.git` command.
+- Open the directory containing the project. 
+- Run `cp .env.example .env` command.
+- Run `composer install` command.
+- Run `npm install or yarn` command.
+- Run `php artisan key:generate` command.
 
-
-## Other commands: 
-
-Generate basic scaffolding
-- php artisan ui bootstrap
-- php artisan ui vue
-- php artisan ui react
-
-Generate login registration scaffolding
-- php artisan ui bootstrap --auth
-- php artisan ui vue --auth
-- php artisan ui react --auth
-
-Note: This legacy package is a very simple authentication scaffolding built on the Bootstrap CSS framework. While it continues to work with the latest version of Laravel, you should consider using Laravel Breeze for new projects. Or, for something more robust, consider Laravel Jetstream.
+## Things to remember (For developer):
+- Code must be written as per PSR-2 coding standards. CI using Styleci is integrated in the repo. 
