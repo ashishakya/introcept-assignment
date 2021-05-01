@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Employee;
+
+use App\Http\Controllers\Controller;
 
 /**
  * Class EmployeeController
@@ -29,7 +31,7 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(int $id)
+    public function show($id)
     {
         return view("employee.show");
     }
