@@ -21,7 +21,7 @@ final class Genders
     {
         try {
             $reflectionClass = new ReflectionClass(__CLASS__);
-        } catch ( \Exception $e ) {
+        } catch (\Exception $e) {
             return [];
         }
 

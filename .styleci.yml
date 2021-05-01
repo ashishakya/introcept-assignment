@@ -1,13 +1,27 @@
-php:
-  preset: laravel
-  disabled:
-    - no_unused_imports
-  finder:
-    not-name:
-      - index.php
-      - server.php
-js:
-  finder:
-    not-name:
-      - webpack.mix.js
-css: true
+preset: psr2
+finder:
+  exclude:
+    - "tests"
+  name: "*.php"
+
+
+
+
+
+#  disabled:
+#    - no_unused_imports
+#  finder:
+#    not-name:
+#      - index.php
+#      - server.php
+#js:
+#  finder:
+#    not-name:
+#      - webpack.mix.js
+#css: true
+
+#js: false
+#ts: false
+#css: false
+#vue: false
+#py: false

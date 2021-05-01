@@ -3,7 +3,6 @@
 
 namespace App\Http\Controllers\Api\Employee;
 
-
 use App\Http\Controllers\Api\BaseAPIController;
 use App\Http\Requests\Employee\EmployeeCreateRequest;
 use App\Services\Employee\EmployeeService;
@@ -42,7 +41,7 @@ class EmployeeController extends BaseAPIController
             $request->prepare()->persist();
 
             return $this->sendJsonRedirectResponse(route("employees.index"));
-        } catch ( Exception $e ) {
+        } catch (Exception $e) {
             logger()->error($e->getMessage());
 
             return $this->sendError("Error while registering.");
@@ -71,4 +70,3 @@ class EmployeeController extends BaseAPIController
         return $this->sendResponse($employeeDetail);
     }
 }
-
