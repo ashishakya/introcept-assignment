@@ -30,7 +30,7 @@ class EmployeeCsvRepository implements EmployeeRepositoryInterface
             $file     = fopen($filePath, "a");
             fputcsv($file, $data);
             fclose($file);
-        } catch ( \Exception $exception ) {
+        } catch (\Exception $exception) {
             throw new \Exception($exception);
         }
     }
@@ -43,13 +43,13 @@ class EmployeeCsvRepository implements EmployeeRepositoryInterface
         $filePath  = storage_path($this->fileName);
         $employees = [];
 
-        if ( !file_exists($filePath) ) {
+        if (!file_exists($filePath)) {
             return collect($employees);
         }
 
         $file = fopen($filePath, "r");
 
-        while ( ($employeesDataSet = fgetcsv($file, 1000, ",")) !== false ) {
+        while (($employeesDataSet = fgetcsv($file, 1000, ",")) !== false) {
             $employees[] = $this->getFormatted($employeesDataSet);
         }
 
@@ -68,14 +68,14 @@ class EmployeeCsvRepository implements EmployeeRepositoryInterface
         $filePath = storage_path($this->fileName);
         $employee = [];
 
-        if ( !file_exists($filePath) ) {
+        if (!file_exists($filePath)) {
             return $employee;
         }
 
         $file = fopen($filePath, "r");
 
-        while ( ($employeesDataSet = fgetcsv($file, 1000, ",")) !== false ) {
-            if ( (int) $employeesDataSet[0] === $id ) {
+        while (($employeesDataSet = fgetcsv($file, 1000, ",")) !== false) {
+            if ((int) $employeesDataSet[0] === $id) {
                 return $this->getFormatted($employeesDataSet);
             }
         }
