@@ -1,12 +1,4 @@
 preset: psr2
-finder:
-  exclude:
-    - "tests"
-  name: "*.php"
-
-
-
-
 
 #  disabled:
 #    - no_unused_imports
