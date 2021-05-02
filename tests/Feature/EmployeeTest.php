@@ -99,5 +99,3 @@ class EmployeeTest extends TestCase
         $response->assertSessionHasNoErrors();
     }
 }
-
-
