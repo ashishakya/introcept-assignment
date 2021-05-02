@@ -4,6 +4,7 @@ namespace App\Http\Requests\Employee;
 
 use App\Constants\ContactModes;
 use App\Constants\Genders;
+use App\Constants\General;
 use App\Repositories\EmployeeRepository\EmployeeRepositoryInterface;
 use App\Rules\MobileNumberValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -59,7 +60,7 @@ class EmployeeCreateRequest extends FormRequest
             "email"                  => ['required', "email"],
             "address"                => ['required', "string", "max:255"],
             "nationality"            => ['required', "string", "max:255"],
-            "dob"                    => ['required', "date", "before:today", "date_format:Y-m-d"],
+            "dob"                    => ['required', "date", "before:today", sprintf("date_format:%s", General::DATE_FORMAT)],
             "educational_background" => ['required', "string", "max:255"],
             "mode_of_contact"        => ['required', "string", Rule::in(array_values(ContactModes::all()))],
         ];
@@ -75,7 +76,7 @@ class EmployeeCreateRequest extends FormRequest
             parent::validated(),
             [
                 "created_at" => now(),
-                "updated_at"=>now()
+                "updated_at" => now(),
             ]
         );
     }

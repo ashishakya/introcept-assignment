@@ -15,3 +15,47 @@
 
 ## Things to remember (For developer):
 - Code must be written as per PSR-2 coding standards. CI using Styleci is integrated in the repo. 
+
+### To run the test case:
+- Run `php artisan test` command. Currently, the test case checks the existence of the API and checks if the POST request validates the data properly. 
+
+
+## Project Structure
+```
+-- app
+   |-- Constants
+       |-- ContactModes.php
+       |-- Genders.php
+       |-- General.php      
+   |-- Helpers
+       |-- routes.php
+   |-- Http
+       |-- Controllers
+           |-- Api
+               |-- Employee
+                   |-- EmployeeController
+               |-- BaseApiController.php 
+   |-- Providers
+       |-- HelperServiceProvider.php
+       |-- RepositoriesServiceProvider.php
+       
+ -- resources
+    |-- js
+       |-- Classes
+            |-- Errors.js
+            |-- Form.js
+       |-- components
+           |-- Common
+               |-- ErrorMessage.vue
+           |-- Employee
+               |-- EmployeeCreate.vue
+               |-- EmployeeDetail.vue
+               |-- EmployeeList.vue
+        |-- mixins
+            |-- routeMixin.vue
+            
+ -- tests
+    |-- Feature
+        |-- EmployeeTest.php 
+```
+    
