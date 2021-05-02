@@ -32,7 +32,7 @@ class BaseAPIController extends Controller
      *
      * @return JsonResponse
      */
-    public function sendResponse($result, $message = 'Success'): JsonResponse
+    public function sendResponse($result, string $message = 'Success'): JsonResponse
     {
         $response = [
             'success' => true,
@@ -49,7 +49,7 @@ class BaseAPIController extends Controller
      *
      * @return JsonResponse
      */
-    public function sendError(string $errorMessage="Error occurred", $code = 404): JsonResponse
+    public function sendError(string $errorMessage = "Error occurred", int $code = 404): JsonResponse
     {
         $response = [
             'success' => false,

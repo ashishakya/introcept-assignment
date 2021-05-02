@@ -65,7 +65,7 @@ class EmployeeController extends BaseAPIController
      */
     public function show($id): JsonResponse
     {
-        $employeeDetail = $this->employeeService->findById((int) $id);
+        $employeeDetail = $this->employeeService->findById((int)$id);
 
         return $this->sendResponse($employeeDetail);
     }
