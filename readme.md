@@ -1,5 +1,7 @@
 # IntroCept Task-Assessment
 
+Site URL: `http://introcept-assignment.ashishakya.com.np`
+
 ## Prerequisite
 - PHP >=7.4
 - Node >=12
@@ -18,6 +20,12 @@
 
 ### To run the test case:
 - Run `php artisan test` command. Currently, the test case checks the existence of the API and checks if the POST request validates the data properly. 
+
+### Deployment
+Deployment is automated using Capistrano.
+
+- Deployment Code: `cap <env> deploy branch=<branch>`
+
 
 
 ## Project Structure
