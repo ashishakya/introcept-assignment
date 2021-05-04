@@ -34,9 +34,6 @@ set :webserver_user,      "www-data"
 set :group,               "www-data"
 set :keep_releases,       1
 
-# # Slack Integration #
-# #####################################################################################
-# set :slack_webhook_url,     "https://hooks.slack.com/services/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"
 #
 # # Rollbar Integration #
 # #####################################################################################
