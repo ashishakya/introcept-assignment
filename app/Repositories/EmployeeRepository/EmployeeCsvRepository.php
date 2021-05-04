@@ -17,6 +17,24 @@ class EmployeeCsvRepository implements EmployeeRepositoryInterface
     private string $fileName = "employee.csv";
 
     /**
+     * @var array
+     */
+    private array $fillables = [
+        "id",
+        "name",
+        "gender",
+        "phone",
+        "email",
+        "address",
+        "nationality",
+        "dob",
+        "educational_background",
+        "mode_of_contact",
+        "created_at",
+        "updated_at",
+    ];
+
+    /**
      * Write data in a csv file
      *
      * @param array $data
@@ -27,6 +45,10 @@ class EmployeeCsvRepository implements EmployeeRepositoryInterface
     {
         try {
             $filePath = storage_path($this->fileName);
+            if (!file_exists($filePath) || !filesize($filePath)) {
+                $file     = fopen($filePath, "w");
+                fputcsv($file, $this->fillables);
+            }
             $file     = fopen($filePath, "a");
             fputcsv($file, $data);
             fclose($file);
@@ -48,6 +70,7 @@ class EmployeeCsvRepository implements EmployeeRepositoryInterface
         }
 
         $file = fopen($filePath, "r");
+        fgets($file);
 
         while (($employeesDataSet = fgetcsv($file, 1000, ",")) !== false) {
             $employees[] = $this->getFormatted($employeesDataSet);
