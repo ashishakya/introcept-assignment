@@ -1,6 +1,6 @@
 # IntroCept Task-Assessment
 
-Site URL: `http://introcept-assignment.ashishakya.com.np`
+Site URL: http://introcept-assignment.ashishakya.com.np
 
 ## Prerequisite
 - PHP >=7.4
