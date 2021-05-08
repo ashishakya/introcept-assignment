@@ -20,3 +20,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::resource("employees", EmployeeController::class)->only(["store", "index", "show"]);
+Route::post("slack", [EmployeeController::class, "slack"])->name("test.slack");
