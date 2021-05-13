@@ -37,8 +37,7 @@ class EmployeeController extends BaseAPIController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(EmployeeCreateRequest $request): JsonResponse
-    {
+    public function store(EmployeeCreateRequest $request   ): JsonResponse{
         try {
             $request->prepare()->persist();
 
@@ -48,6 +47,8 @@ class EmployeeController extends BaseAPIController
 
             return $this->sendError("Error while registering.");
         }
+
+
     }
 
     /**
