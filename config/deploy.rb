@@ -5,6 +5,7 @@
 set :application,     "Introcept-Assignment"
 set :branch,          ENV["branch"] || "main"
 set :user,            ENV["user"] || ENV["USER"] || "ubuntu"
+set :isolated,        ENV["isolated"] || "false"
 
 # SCM #
 #####################################################################################
@@ -45,6 +46,19 @@ set :keep_releases,       1
 require 'date'
 set :current_time, DateTime.now
 set :current_timestamp, DateTime.now.to_time.to_i
+
+# Capistrano Testing #
+##################################################
+namespace :check do
+    desc "Set environment variables"
+    task :directories_path do
+          puts  (">>>>>> Showing directories path <<<<<<<<<")
+          puts  ("Isolated status: #{fetch(:isolated)}")
+          puts  ("Deploy to path is #{fetch(:deploy_to)}")
+          puts  ("Shared to path is #{fetch(:shared_path)}")
+          puts  ("Overlay path is #{fetch(:overlay_path)}")
+    end
+end
 
 # Application Tasks #
 #######################################################################################
